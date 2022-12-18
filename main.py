@@ -31,13 +31,22 @@ class TagP(Body):
    def __init__(self):
       Body.__init__(self, "<b></b>")
 
-
-# from abc import ABC, abstractmethod
-# class AbstractFactory:
-#    @abstractmethod
-#    def getTag(self): pass
-
-class NotPairTagFactory():
+from abc import ABC, abstractmethod
+class AbstractFactory():
+   @abstractmethod
+   def getTagBr(self):pass
+   @abstractmethod
+   def getTagHr(self):pass
+   @abstractmethod 
+   def getTagSub(self):pass
+   @abstractmethod   
+   def getTagDiv(self):pass
+   @abstractmethod
+   def getTagSpan(self):pass
+   @abstractmethod
+   def getTagP(self):pass
+     
+class NotPairTagFactory(AbstractFactory):
    def getTagBr(self):
       return TagBr()
    def getTagHr(self):
@@ -45,7 +54,7 @@ class NotPairTagFactory():
    def getTagSub(self):
       return TagSub()
 
-class PairTagFactory():
+class PairTagFactory(AbstractFactory):
    def getTagDiv(self):
       return TagDiv()
    def getTagSpan(self):
