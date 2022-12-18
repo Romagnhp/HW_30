@@ -50,7 +50,7 @@ class PairTagFactory():
       return TagDiv()
    def getTagSpan(self):
       return TagSpan()
-   def getTagP():
+   def getTagP(self):
       return TagP()
 
 temp  = NotPairTagFactory()  
@@ -58,6 +58,15 @@ tag_1 = temp.getTagBr()
 tag_2 = temp.getTagHr()
 tag_3 = temp.getTagSub()
 
-print({tag_1.getTag()})
-print({tag_2.getTag()})
-print({tag_3.getTag()})
+print(tag_1.getTag())
+print(tag_2.getTag())
+print(tag_3.getTag())
+
+temp = PairTagFactory()
+tag_1 = temp.getTagDiv()
+tag_2 = temp.getTagSpan()
+tag_3 = temp.getTagP()
+
+print(tag_1.getTag())
+print(tag_2.getTag())
+print(tag_3.getTag())
