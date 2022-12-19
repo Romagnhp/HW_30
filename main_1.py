@@ -1,5 +1,5 @@
 class Body:
-   html = ''
+   html = '<body></body>'
      
    def getTag(self):
       return self.html
