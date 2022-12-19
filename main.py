@@ -1,5 +1,5 @@
-class Body:
-   __html = '<body></body>'
+class Tag:
+   __html = ''
 
    def __init__(self, html):
       self.__html = html
@@ -7,29 +7,29 @@ class Body:
    def getTag(self):
       return self.__html
 
-class TagBr(Body):
+class TagBr(Tag):
    def __init__(self):
-      Body.__init__(self, "<br>")
+      Tag.__init__(self, "<br>")
 
-class TagHr(Body):
+class TagHr(Tag):
    def __init__(self):
-      Body.__init__(self, "<hr>")
+      Tag.__init__(self, "<hr>")
 
-class TagSub(Body):
+class TagSub(Tag):
    def __init__(self):
-      Body.__init__(self, "<sub>")
+      Tag.__init__(self, "<sub>")
 
-class TagDiv(Body):
+class TagDiv(Tag):
    def __init__(self):
-      Body.__init__(self, "<div></div>")
+      Tag.__init__(self, "<div></div>")
 
-class TagSpan(Body):
+class TagSpan(Tag):
    def __init__(self):
-      Body.__init__(self, "<span></span>")
+      Tag.__init__(self, "<span></span>")
 
-class TagP(Body):
+class TagP(Tag):
    def __init__(self):
-      Body.__init__(self, "<b></b>")
+      Tag.__init__(self, "<b></b>")
 
 from abc import ABC, abstractmethod
 class AbstractFactory():
