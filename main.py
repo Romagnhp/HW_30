@@ -1,81 +1,70 @@
 class Tag:
    __html = ''
+   __htmlEnd = ''
 
-   def __init__(self, html):
+   def __init__(self, html, htmlEnd):
       self.__html = html
+      self.__htmlEnd = htmlEnd
      
    def getTag(self):
       return self.__html
 
+   def getTagEnd(self):
+      return self.__htmlEnd
+
 class TagBr(Tag):
    def __init__(self):
-      Tag.__init__(self, "<br>")
+      Tag.__init__(self, "<br>", "")
 
 class TagHr(Tag):
    def __init__(self):
-      Tag.__init__(self, "<hr>")
+      Tag.__init__(self, "<hr>",  "")
 
 class TagSub(Tag):
    def __init__(self):
-      Tag.__init__(self, "<sub>")
+      Tag.__init__(self, "<sub>", "")
 
 class TagDiv(Tag):
    def __init__(self):
-      Tag.__init__(self, "<div></div>")
+      Tag.__init__(self, "<div>", "</div>")
 
 class TagSpan(Tag):
    def __init__(self):
-      Tag.__init__(self, "<span></span>")
+      Tag.__init__(self, "<span>", "</span>")
 
-class TagP(Tag):
+class TagB(Tag):
    def __init__(self):
-      Tag.__init__(self, "<b></b>")
+      Tag.__init__(self, "<b>", "</b>")
 
 from abc import ABC, abstractmethod
 class AbstractFactory():
    @abstractmethod
-   def getTagBr(self):pass
+   def createTag_1(self):pass
    @abstractmethod
-   def getTagHr(self):pass
+   def createTag_2(self):pass
    @abstractmethod 
-   def getTagSub(self):pass
-   @abstractmethod   
-   def getTagDiv(self):pass
-   @abstractmethod
-   def getTagSpan(self):pass
-   @abstractmethod
-   def getTagP(self):pass
+   def createTag_3(self):pass
      
 class NotPairTagFactory(AbstractFactory):
-   def getTagBr(self):
+   def createTag_1(self):
       return TagBr()
-   def getTagHr(self):
+   def createTag_2(self):
       return TagHr()
-   def getTagSub(self):
+   def createTag_3(self):
       return TagSub()
 
 class PairTagFactory(AbstractFactory):
-   def getTagDiv(self):
+   def createTag_1(self):
       return TagDiv()
-   def getTagSpan(self):
+   def createTag_2(self):
       return TagSpan()
-   def getTagP(self):
-      return TagP()
+   def createTag_3(self):
+      return TagB()
 
-temp  = NotPairTagFactory()  
-tag_1 = temp.getTagBr()
-tag_2 = temp.getTagHr()
-tag_3 = temp.getTagSub()
+listOfClass_1 = [NotPairTagFactory().createTag_1(), NotPairTagFactory().createTag_2(), NotPairTagFactory().createTag_3()]
+for temp in listOfClass_1:
+   print(temp.getTag())
 
-print(tag_1.getTag())
-print(tag_2.getTag())
-print(tag_3.getTag())
-
-temp = PairTagFactory()
-tag_1 = temp.getTagDiv()
-tag_2 = temp.getTagSpan()
-tag_3 = temp.getTagP()
-
-print(tag_1.getTag())
-print(tag_2.getTag())
-print(tag_3.getTag())
+listOfClass_2 = [PairTagFactory().createTag_1(), PairTagFactory().createTag_2(), PairTagFactory().createTag_3()]
+for temp in listOfClass_2:
+   print(temp.getTag(), temp.getTagEnd())
